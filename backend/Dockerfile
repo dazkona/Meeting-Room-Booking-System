@@ -43,7 +43,6 @@ COPY .env /var/www/.env
 RUN if [ ! -f .env ]; then cp .env.example .env; fi
 
 RUN php artisan key:generate
-RUN php artisan optimize:clear
 RUN php artisan migrate:refresh
 
 # Change current user to www
