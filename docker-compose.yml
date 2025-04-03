@@ -1,0 +1,30 @@
+services:
+  #-----------------------------
+  frontend:
+    restart: on-failure
+    build: ./frontend
+    hostname: frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - frontend-backend
+    depends_on:
+      - backend
+  #-----------------------------
+  backend:
+    restart: on-failure
+    build: ./backend
+    hostname: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - frontend-backend
+
+networks:
+  frontend-backend:
+volumes:
+  db-data:
