@@ -1,4 +1,4 @@
-# Docplanner Incubator Team Technical Interview: DANIEL AZKONA
+# Meeting Room Booking System (Vue, Laravel and Docker)
 
 ## The design I put together
 
@@ -8,34 +8,42 @@ I took a creative licence and added a new endpoint to the specification. The GET
 
 The only seed data created in the database is for the rooms. I have included 5 rooms with simple names to test the system.
 
-
 ## Installation
 
 It's inside a Docker Composer structure. So please, install Docker and Docker Composer and navigate the project folder to execute:
+
 ```sh
 docker compose up --build --abort-on-container-exit --remove-orphans
 ```
+
 An then navigate with the browser to
+
 ```sh
 http://127.0.0.1:8080/
 ```
 
 ## To launch the test on Laravel, once the docker compose system is running:
 
-Identify the backend container ID with 
+Identify the backend container ID with
+
 ```sh
 docker ps
 ```
+
 In my local is d0f1d202afef, so then call to connect to the shell of the Docker Laravel
+
 ```sh
 docker exec -it d0f1d202afef sh
 ```
+
 Once connected, run the tests with
+
 ```sh
 php artisan test --testsuite=Booking
 ```
 
 ## Comments for improvements or next steps
+
 - I honestly hate using magic numbers, but to be quick I've used hourly limits (9:00 - 18:00) as hardcoded values. So sorry, need to be defined dynamically.
 - A visual calendar with hours coloured according to current occupancy. Or a system to check which rooms are available for a particular date.
 - Send a Google Cal appointment to all guests.
